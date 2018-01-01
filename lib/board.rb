@@ -9,9 +9,11 @@ class Board
   def send_feedback_to_player(colors_array)
     #compare two arrays and send back a color sequence
 
-    add_red(colors_array)
-    #WhiteAdder(result)
+    red_array = add_red(colors_array)
+    white_array = add_white(colors_array)
     #BlankAdder(feedback)
+
+    red_array + white_array
 
   end
 
@@ -27,8 +29,16 @@ class Board
     return feedback
   end
 
-  def WhiteAdder(result)
-
+  def add_white(colors_array)
+    feedback = []
+    i = 0
+    while i < colors_array.length
+      if sequence.include?(colors_array[i]) &&  sequence[i] != colors_array[i]
+        feedback << 'white'
+      end
+      i += 1
+    end
+    return feedback
   end
 
   def BlankAdder(feedback)

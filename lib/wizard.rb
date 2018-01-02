@@ -67,6 +67,7 @@ class Wizard
       puts "Attempts remaining: #{tries}\n\n"
       if tries == 0
         puts "You have been denied entry into the Mines of Moria!\n\n"
+        puts "The correct sequence was #{board.sequence}"
         break
       end
     end

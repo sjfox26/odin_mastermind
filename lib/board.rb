@@ -11,7 +11,7 @@ class Board
 
     red_array = add_red(colors_array)
     white_array = add_white(colors_array)
-    #BlankAdder(feedback)
+    #add_blanks(red_and_white_array)
 
     red_array + white_array
 
@@ -41,8 +41,7 @@ class Board
     return feedback
   end
 
-  def BlankAdder(feedback)
-
-  end
+  #def add_blanks(red_and_white_array)
+  #end
 
 end

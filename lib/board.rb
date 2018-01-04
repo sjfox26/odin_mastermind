@@ -1,9 +1,19 @@
 class Board
   attr_reader :sequence, :send_feedback_to_player
 
-  def initialize
+  def initialize(level)
     @colors = ['red', 'blue', 'yellow', 'green', 'white', 'orange']
-    @sequence = @colors.shuffle[0..3]
+    #@sequence = @colors.shuffle[0..3]
+    @level = level
+    @sequence = initialize_by_difficulty(level)#
+  end
+
+  def initialize_by_difficulty(level)
+    if level == 'easy'
+      @colors.shuffle[0..3]
+    elsif level == 'hard'
+      @colors.shuffle[0..5]
+    end
   end
 
   def send_feedback_to_player(colors_array)

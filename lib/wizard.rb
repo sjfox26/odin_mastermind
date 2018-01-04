@@ -4,32 +4,34 @@ class Wizard
   attr_reader :board
 
   def initialize
-    @board = Board.new
+    @board = Board.new('hard')
   end
 
   def introduce_challenge
+    puts "Hello, in this game you are Gandalf the Grey, the badass wizard. To enter the Mines of Moria, you must use your superior"
+    puts "logic skills to guess the correct sequence of colors.\n\n"
 
-    puts "Hello, my name is Gandalf. To enter the Mines of Moria, you must guess the correct sequence of colors.\n\n"
+    puts "At the beginning of the game, the wall will pick a sequence of 4, or 6 colors (depending on difficulty level)."
+    puts "The wall will tell you how many colors you should guess.  There are no repeat colors!\n\n"
 
-    puts "At the beginning of the game, the wall will pick a sequence of 4 or 6 colored lights (depending on difficulty),"
-    puts "each one being one of any of 4, 6, or 8 colors (depending on difficulty). The object of the game is to guess"
-    puts "the exact colors in the exact order in the wall's hidden sequence, in as few guesses as possible. After each guess,"
-    puts "the wall will give you a response showing how close your guess was.\n\n"
+    puts "You will type in a sequence of colors (separated by commas), and the wall will give you hints back!\n\n"
 
-    puts "For each correct color in the sequence, the wall will show a white light. If the color is in the correct spot,"
-    puts "the wall will show a red light.  The red lights will appear first, and do not necessarily correspond to the location of"
-    puts "the color.  That's where your brain comes in.\n\n"
+    puts "Here's how the HINTS work:"
+    puts "First, the wall will check if any of the colors you selected are the CORRECT COLOR IN THE CORRECT SPOT"
+    puts "For however many of those in your sequence, the wall will return the color 'red' "
+    puts "Then, the wall will check to see if any of the colors you selected are the CORRECT COLOR IN THE WRONG SPOT"
+    puts "For however many of those in your sequence, the wall will return the color 'white'\n\n"
 
-    #ask_for_sequence
-
+    puts "For exampple, if the wall returns one red and one white, that means that one of the colors you selected"
+    puts "is in the correct spot, and another color you selected is included in the wall's hidden sequence.\n\n"
   end
 
   def ask_for_sequence
-    puts "Tell me your guesses by inputting a sequence of colors, for instance:\n\n"
-    puts "red, green, blue, yellow\n\n"
-    puts "is a guess for a sequence of red, green, blue, and yellow\n\n"
-    puts "Available colors are: red, green, blue, yellow, white, and orange.\n\n"
-    puts "Don't forget to separate your colors by commas. There are no repeat colors.\n\n"
+    puts "Available colors are: red, green, blue, yellow, white, and orange."
+    puts "Don't forget to separate your colors by commas. Remember, no repeat colors.\n\n"
+
+    puts "Tell me your guesses by inputting a sequence of colors, like so (for a four-color sequence):"
+    puts "red, green, blue, yellow"
   end
 
   def get_player_sequence
@@ -40,6 +42,7 @@ class Wizard
 
   def reveal_sequence
     puts "******The correct sequence is actually #{board.sequence}\n\n"
+    puts "There wall has chosen a sequence of #{board.sequence.length} colors. Good luck!\n\n"
   end
 
 

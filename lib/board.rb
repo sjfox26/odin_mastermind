@@ -1,5 +1,5 @@
 class Board
-  attr_reader :sequence, :send_feedback_to_player
+  attr_accessor :sequence, :send_feedback_to_player
 
   def initialize(level)
     @colors = ['red', 'blue', 'yellow', 'green', 'white', 'orange']
@@ -14,6 +14,19 @@ class Board
     elsif level == 'hard'
       @colors.shuffle[0..5]
     end
+  end
+
+  def ask_for_sequence
+    puts "Available colors are: red, green, blue, yellow, white, and orange."
+    puts "Don't forget to separate your colors by commas. Remember, no repeat colors.\n\n"
+
+    puts "Tell me your guesses by inputting a sequence of colors, like so (for a four-color sequence):"
+    puts "red, green, blue, yellow"
+  end
+
+  def reveal_sequence_development
+    puts "******The correct sequence is actually #{sequence}\n\n"
+    puts "The wall has chosen a sequence of #{sequence.length} colors. Good luck!\n\n"
   end
 
   def send_feedback_to_player(colors_array)
@@ -53,5 +66,24 @@ class Board
 
   #def add_blanks(red_and_white_array)
   #end
+  def get_player_sequence
+    ask_for_sequence
+    player_sequence = gets.chomp
+    player_sequence.split(', ')    #use ER splotch or whatever it was called method?
+  end
+
+  def check_if_correct_sequence
+    perfect_match = false
+    @player_guess_array = get_player_sequence
+    if @player_guess_array == sequence
+      perfect_match = true
+      puts "You got it!  You may enter the Mines of Moria"
+    end
+    code_returned = send_feedback_to_player(@player_guess_array)
+    p code_returned
+    perfect_match
+  end
+
+
 
 end

@@ -1,7 +1,7 @@
 require_relative 'board'
 
 class Wizard
-  attr_reader :board
+  attr_accessor :board
 
   def initialize
     @board = Board.new('hard')
@@ -26,46 +26,46 @@ class Wizard
     puts "is in the correct spot, and another color you selected is included in the wall's hidden sequence.\n\n"
   end
 
-  def ask_for_sequence
-    puts "Available colors are: red, green, blue, yellow, white, and orange."
-    puts "Don't forget to separate your colors by commas. Remember, no repeat colors.\n\n"
+#  def ask_for_sequence
+#    puts "Available colors are: red, green, blue, yellow, white, and orange."
+#    puts "Don't forget to separate your colors by commas. Remember, no repeat colors.\n\n"
 
-    puts "Tell me your guesses by inputting a sequence of colors, like so (for a four-color sequence):"
-    puts "red, green, blue, yellow"
-  end
+#    puts "Tell me your guesses by inputting a sequence of colors, like so (for a four-color sequence):"
+#    puts "red, green, blue, yellow"
+#  end
 
-  def get_player_sequence
-    ask_for_sequence
-    player_sequence = gets.chomp
-    player_sequence.split(', ')    #use ER splotch or whatever it was called method?
-  end
+#  def get_player_sequence
+#    ask_for_sequence
+#    player_sequence = gets.chomp
+#    player_sequence.split(', ')    #use ER splotch or whatever it was called method?
+#  end
 
-  def reveal_sequence
-    puts "******The correct sequence is actually #{board.sequence}\n\n"
-    puts "There wall has chosen a sequence of #{board.sequence.length} colors. Good luck!\n\n"
-  end
+#  def reveal_sequence
+#    puts "******The correct sequence is actually #{board.sequence}\n\n"
+#    puts "There wall has chosen a sequence of #{board.sequence.length} colors. Good luck!\n\n"
+#  end
 
 
-  def check_if_correct_sequence
-    perfect_match = false
-    @player_guess_array = get_player_sequence
-    if @player_guess_array == board.sequence
-      perfect_match = true
-      puts "You got it!  You may enter the Mines of Moria"
-    end
-    perfect_match
-  end
+#  def check_if_correct_sequence
+#    perfect_match = false
+#    @player_guess_array = get_player_sequence
+#    if @player_guess_array == board.sequence
+#      perfect_match = true
+#      puts "You got it!  You may enter the Mines of Moria"
+#    end
+#    perfect_match
+#  end
 
 
   def play
     introduce_challenge
-    reveal_sequence
+    board.reveal_sequence_development
     tries = 10
     while true
-      result = check_if_correct_sequence
+      result = board.check_if_correct_sequence
       break if result == true
-      code_returned = board.send_feedback_to_player(@player_guess_array)
-      p code_returned
+#      code_returned = board.send_feedback_to_player
+#      p code_returned
       tries = tries - 1
       puts "Attempts remaining: #{tries}\n\n"
       if tries == 0

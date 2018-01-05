@@ -1,6 +1,6 @@
 require_relative 'board'
 
-class Wizard
+class Game
   attr_accessor :board
 
   def initialize
@@ -26,36 +26,6 @@ class Wizard
     puts "is in the correct spot, and another color you selected is included in the wall's hidden sequence.\n\n"
   end
 
-#  def ask_for_sequence
-#    puts "Available colors are: red, green, blue, yellow, white, and orange."
-#    puts "Don't forget to separate your colors by commas. Remember, no repeat colors.\n\n"
-
-#    puts "Tell me your guesses by inputting a sequence of colors, like so (for a four-color sequence):"
-#    puts "red, green, blue, yellow"
-#  end
-
-#  def get_player_sequence
-#    ask_for_sequence
-#    player_sequence = gets.chomp
-#    player_sequence.split(', ')    #use ER splotch or whatever it was called method?
-#  end
-
-#  def reveal_sequence
-#    puts "******The correct sequence is actually #{board.sequence}\n\n"
-#    puts "There wall has chosen a sequence of #{board.sequence.length} colors. Good luck!\n\n"
-#  end
-
-
-#  def check_if_correct_sequence
-#    perfect_match = false
-#    @player_guess_array = get_player_sequence
-#    if @player_guess_array == board.sequence
-#      perfect_match = true
-#      puts "You got it!  You may enter the Mines of Moria"
-#    end
-#    perfect_match
-#  end
-
 
   def play
     introduce_challenge
@@ -79,6 +49,5 @@ end
 
 
 
-gandalf = Wizard.new
-gandalf.play
-
+game = Game.new
+game.play

@@ -29,7 +29,7 @@ class Board
     puts "The wall has chosen a sequence of #{sequence.length} colors. Good luck!\n\n"
   end
 
-  def send_feedback_to_player(colors_array)
+  def generate_feedback_code(colors_array)
     #compare two arrays and send back a color sequence
 
     red_array = add_red(colors_array)
@@ -79,8 +79,8 @@ class Board
       perfect_match = true
       puts "You got it!  You may enter the Mines of Moria"
     end
-    code_returned = send_feedback_to_player(@player_guess_array)
-    p code_returned
+    hints_returned = generate_feedback_code(@player_guess_array)
+    p hints_returned
     perfect_match
   end
 

@@ -14,12 +14,24 @@ RSpec.describe Board do
     end
   end
 
-  context "#send_feedback_to_player" do
+  context "#generate_feedback_code" do
     it 'gives the correct feedback to player after each guess' do
       board = Board.new('easy')
       board.sequence = ['yellow', 'orange', 'blue', 'green']
-      expect(board.send_feedback_to_player(['yellow', 'blue', 'brown', 'green'])).to eq(['red', 'red', 'white'])
+      expect(board.generate_feedback_code(['yellow', 'blue', 'brown', 'green'])).to eq(['red', 'red', 'white'])
     end
 
   end
+
+  context "#get_player_sequence" do
+    it "should call ask_for_sequence" do
+      board = Board.new('easy')
+      expect(board).to receive(:ask_for_sequence)
+
+      board.get_player_sequence
+    end
+  end
+
+
+  ##check if winning combo returns true
 end

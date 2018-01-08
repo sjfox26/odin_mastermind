@@ -33,5 +33,24 @@ RSpec.describe Board do
   end
 
 
-  ##check if winning combo returns true
+  context "#check_if_correct sequence" do
+    it "should return false when not given the correct sequence" do
+      board = Board.new('easy')
+      board.sequence = ['yellow', 'orange', 'blue', 'green']
+      allow(board).to receive(:get_player_sequence).and_return(['red', 'blue', 'green', 'orange'])
+
+      expect(board.check_if_correct_sequence).to be_falsey
+    end
+
+    it "should return true when given the correct sequence" do
+      board = Board.new('easy')
+      board.sequence = ['yellow', 'orange', 'blue', 'green']
+      allow(board).to receive(:get_player_sequence).and_return(['yellow', 'orange', 'blue', 'green'])
+
+      expect(board.check_if_correct_sequence).to be_truthy
+    end
+
+
+
+  end
 end

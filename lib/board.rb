@@ -1,5 +1,5 @@
 class Board
-  attr_accessor :sequence, :send_feedback_to_player
+  attr_accessor :sequence, :send_feedback_to_player, :player_guess_array
 
   def initialize(level)
     @colors = ['red', 'blue', 'yellow', 'green', 'white', 'orange']
